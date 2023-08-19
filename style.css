@@ -14,11 +14,12 @@ h1
 }
 #a
 {
+    top: 0px;
     width: 100%;
     position: fixed;
     background-color: #232323;
 }
-#link
+.link
 {
     text-decoration: none;
     background-color: #232323;
