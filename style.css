@@ -2,20 +2,21 @@
 {
     background-color: #000000;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 2vw;
     font-family: 'Comic Sans Ms', Borel, Handjet, 'Dancing Script', Satisfy, Kalam, Courgette, sans-serif;
 }
 h1
 {
     text-align: center;
     text-decoration: dotted underline;
-    font-size: 30px;
-    font-weight: 1000;
+    font-size: 3vw;
+    font-weight: 900;
 }
 #a
 {
     top: 0px;
-    width: 100%;
+    width: 23px;
+    height: 100px;
     position: fixed;
     background-color: #232323;
 }
@@ -39,7 +40,23 @@ h1
 }
 #links
 {
-    top: 50%;
+    top: auto;
     right: 0px;
     position: fixed;
+}
+#main
+{
+    margin-left: 150px;
+}
+@media screen and (max-width: 414px)
+{
+    #a
+    {
+        width: 100%;
+        height: fit-content;
+    }
+    #main
+    {
+        margin-left: 0px;
+    }
 }
