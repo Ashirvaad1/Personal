@@ -28,6 +28,10 @@ h1
     color: #d9232e;
     margin-right: 6px;
 }
+.link:hover
+{
+    background-color: #d6eeee;
+}
 .line
 {
     height: 8px;
@@ -59,4 +63,18 @@ h1
     {
         margin-left: 0px;
     }
+}
+table
+{
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td
+{
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even)
+{
+    background-color: #d6eeee;
 }
