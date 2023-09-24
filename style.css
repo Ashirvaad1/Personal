@@ -1,4 +1,4 @@
-body
+*
 {
     font-size: 20px;
     font-family: 'Comic Sans Ms', Borel, Handjet, 'Dancing Script', Satisfy, Kalam, Courgette, sans-serif;
@@ -69,17 +69,4 @@ h1
     {
         margin-left: 0px;
     }
-}
-table
-{
-    border-collapse: collapse;
-    width: 100%;
-}
-th, td
-{
-    padding: 8px;
-}
-tr:nth-child(even)
-{
-    background-color: #d6eeee;
 }
