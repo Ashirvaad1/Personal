@@ -11,6 +11,7 @@ h1
     text-decoration: dotted underline;
     font-size: 30px;
     font-weight: 900;
+    text-shadow: 2px 2px 5px red;
 }
 #a
 {
@@ -27,6 +28,10 @@ h1
     font-weight: 900;
     color: #d9232e;
     margin-right: 6px;
+}
+.link:visited
+{
+    color: pink;
 }
 .link:hover
 {
@@ -69,4 +74,16 @@ h1
     {
         margin-left: 0px;
     }
+}
+ol
+{
+    background: #ff9999;
+    padding: 20px;
+}
+ol li
+{
+    background: #ffe5e5;
+    color: darkred;
+    padding: 5px;
+    margin-left: 35px;
 }
