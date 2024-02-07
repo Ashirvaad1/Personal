@@ -98,4 +98,19 @@
             </footer>
         </div>
     </body>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyAjKkBo1vX--sewSWHSuFN97YFryBkZ4Ew",
+    authDomain: "e-commerce-fb8e7.firebaseapp.com",
+    projectId: "e-commerce-fb8e7",
+    storageBucket: "e-commerce-fb8e7.appspot.com",
+    messagingSenderId: "535387621729",
+    appId: "1:535387621729:web:f9c930186d69447c44dd20",
+    measurementId: "G-X5HK239EXR"
+  };
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </html>
