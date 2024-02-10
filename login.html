@@ -4,8 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
+    .container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
 <body>
     <div class="container">
         <h2>Login</h2>
@@ -21,6 +59,38 @@
             <button type="submit">Login</button>
         </form>
     </div>
-    <script src="script.js"></script>
 </body>
+    <script src="https://cdn.auth0.com/js/auth0/9.16/auth0.min.js"></script>
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    console.log("Username: " + username);
+    console.log("Password: " + password);
+});
+    </script>
+    <script>
+        var auth0 = new auth0.WebAuth({
+    domain: 'YOUR_AUTH0_DOMAIN',
+    clientID: 'YOUR_AUTH0_CLIENT_ID',
+    redirectUri: 'http://localhost:3000/callback', // Replace with your callback URL
+    responseType: 'token id_token',
+    scope: 'openid'
+        });
+document.getElementById("login-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    auth0.login({
+        realm: 'Username-Password-Authentication', // Auth0 connection name
+        username: username,
+        password: password
+    }, function(err) {
+        if (err) {
+            console.error("Error logging in: ", err);
+        }
+    });
+});
+    </script>
 </html>
