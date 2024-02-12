@@ -98,5 +98,50 @@
             </footer>
         </div>
         <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+        <script>
+auth0.createAuth0Client({
+  domain: "dev-rltkinel744hmy2l.us.auth0.com",
+  clientId: "g5Vi0Kk5Uw5nJQGVzFNG4e25PIwgpisk",
+  authorizationParams: {
+    redirect_uri: window.location.origin
+  }
+}).then(async (auth0Client) => {
+  const loginButton = document.getElementById("login");
+
+  loginButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    auth0Client.loginWithRedirect();
+  });
+
+  if (location.search.includes("state=") && 
+      (location.search.includes("code=") || 
+      location.search.includes("error="))) {
+    await auth0Client.handleRedirectCallback();
+    window.history.replaceState({}, document.title, "/");
+  }
+
+  const logoutButton = document.getElementById("logout");
+
+  logoutButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    auth0Client.logout();
+  });
+
+  const isAuthenticated = await auth0Client.isAuthenticated();
+  const userProfile = await auth0Client.getUser();
+
+  const profileElement = document.getElementById("profile");
+
+  if (isAuthenticated) {
+    profileElement.style.display = "block";
+    profileElement.innerHTML = `
+            <p>${userProfile.name}</p>
+            <img src="${userProfile.picture}" />
+          `;
+  } else {
+    profileElement.style.display = "none";
+  }
+});
+</script>
 </body>
 </html>
