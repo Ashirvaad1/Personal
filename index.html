@@ -16,6 +16,8 @@
         <script src="https://ashirvaad1.github.io/Personal/auth.js"></script>
     </head>
     <body>
+        <button id="btn-login" disabled="true" onclick="login()">Log in</button>
+        <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>
         <nav>
             <div id="a">
                 <a class="link" href="#main" title="Up">Up</a>
@@ -42,7 +44,7 @@
                         <tbody>
                             <tr>
                                 <td>Born</td>
-                                <td>31 December 2006 (age 16)<br>Basti, Uttar Pradesh, India</td>
+                                <td>31 December 2006 (age 17)<br>Basti, Uttar Pradesh, India</td>
                             </tr>
                             <tr>
                                 <td>Nationality</td>
@@ -70,7 +72,7 @@
                 <hr class="line">
                 <article>
                     <b>
-                        I was born in Basti, Uttar Pradesh and was brought up in Basti. I am at present studying in Class XI from St. Basil's School, Basti. I am fond of programming and listening music. In programming I currently have the knowledge of Java, HTML, CSS, JavaScript and Python.
+                        I was born in Basti, Uttar Pradesh and was brought up in Basti. I am at present studying in Class XI from St. Basil's School, Basti. I am fond of programming and listening music. In programming I have the knowledge of Java, HTML, CSS, JavaScript and Python.
                     </b>
                 </article>
             </main>
@@ -99,51 +101,5 @@
                 </b>
             </footer>
         </div>
-        <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
-        <script>
-auth0.createAuth0Client({
-  domain: "dev-rltkinel744hmy2l.us.auth0.com",
-  clientId: "g5Vi0Kk5Uw5nJQGVzFNG4e25PIwgpisk",
-  authorizationParams: {
-    redirect_uri: window.location.origin
-  }
-}).then(async (auth0Client) => {
-  const loginButton = document.getElementById("login");
-
-  loginButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    auth0Client.loginWithRedirect();
-  });
-
-  if (location.search.includes("state=") && 
-      (location.search.includes("code=") || 
-      location.search.includes("error="))) {
-    await auth0Client.handleRedirectCallback();
-    window.history.replaceState({}, document.title, "/");
-  }
-
-  const logoutButton = document.getElementById("logout");
-
-  logoutButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    auth0Client.logout();
-  });
-
-  const isAuthenticated = await auth0Client.isAuthenticated();
-  const userProfile = await auth0Client.getUser();
-
-  const profileElement = document.getElementById("profile");
-
-  if (isAuthenticated) {
-    profileElement.style.display = "block";
-    profileElement.innerHTML = `
-            <p>${userProfile.name}</p>
-            <img src="${userProfile.picture}" />
-          `;
-  } else {
-    profileElement.style.display = "none";
-  }
-});
-</script>
 </body>
 </html>
