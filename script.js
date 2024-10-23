@@ -16,14 +16,15 @@ const auth = getAuth(app);
 document.getElementById('loginButton').addEventListener('click', function() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      window.location.href = 'home.html';
-    })
-    .catch((error) => {
-      document.getElementById('errorMessage').innerText = error.message;
-    });
-});
+ signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    console.log("Login successful:", userCredential);
+    window.location.href = 'home.html';  // Redirect to home.html
+  })
+  .catch((error) => {
+    console.log("Login error:", error.message);
+    document.getElementById('errorMessage').innerText = error.message;
+  });
 onAuthStateChanged(auth, (user) => {
   if (user) {
     window.location.href = 'home.html';
