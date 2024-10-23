@@ -14,9 +14,7 @@
         <link rel="icon" type="image/x-icon" href="https://lh3.googleusercontent.com/pw/AIL4fc8QvZnSxnDRGbVkfWABTAu-IdyY7agtDv_iSn-MTAmFMksV-sXmQH_6RCZqwF1acJ-Q2b8b62p3h-pfjrdhlEvI2tnMLYDpYpCfNE6QBbHKQttNvg=s256-p-k">
 </head>
 <body>
-    <button id="logoutButton">Logout</button>
     <script type="module">
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
@@ -43,6 +41,9 @@ document.getElementById('logoutButton').addEventListener('click', function() {
   });
 });
 </script>
+    <div id="loading">Loading...</div>
+<div id="mainContent">
+    <button id="logoutButton">Logout</button>
         <nav>
             <div id="a">
                 <a class="link" href="#main" title="Top">Top</a>
@@ -126,5 +127,6 @@ document.getElementById('logoutButton').addEventListener('click', function() {
                 </b>
             </footer>
         </div>
+    </div>
 </body>
 </html>
