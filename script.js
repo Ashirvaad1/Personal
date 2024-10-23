@@ -26,7 +26,12 @@ document.getElementById('loginButton').addEventListener('click', function() {
     document.getElementById('errorMessage').innerText = error.message;
   });
 onAuthStateChanged(auth, (user) => {
-  if (user) {
-    window.location.href = 'home.html';
+  const loadingElement = document.getElementById('loading');
+  const mainContent = document.getElementById('mainContent');
+  if (!user) {
+    window.location.href = 'index.html';
+  } else {
+    loadingElement.style.display = 'none';
+    mainContent.style.display = 'block';
   }
 });
