@@ -14,6 +14,24 @@
         <link rel="icon" type="image/x-icon" href="https://lh3.googleusercontent.com/pw/AIL4fc8QvZnSxnDRGbVkfWABTAu-IdyY7agtDv_iSn-MTAmFMksV-sXmQH_6RCZqwF1acJ-Q2b8b62p3h-pfjrdhlEvI2tnMLYDpYpCfNE6QBbHKQttNvg=s256-p-k">
     </head>
     <body>
+
+        <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyA8aXyZQejDtv_4ErK8o435TCTWsTjebcw",
+    authDomain: "infinity-run-1.firebaseapp.com",
+    projectId: "infinity-run-1",
+    storageBucket: "infinity-run-1.appspot.com",
+    messagingSenderId: "424611937147",
+    appId: "1:424611937147:web:e49291921391b5842c1bde",
+    measurementId: "G-WZ96Y9NC7T"
+  };
+const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+        
         <nav>
             <div id="a">
                 <a class="link" href="#main" title="Top">Top</a>
