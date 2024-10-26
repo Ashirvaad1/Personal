@@ -1,54 +1,43 @@
 <!DOCTYPE html>
 <html lang="en-IN">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="Ashirvaad Verma, Ashirvaad, Homepage">
-        <meta name="description" content="Official website of Ashirvaad Verma">
-        <meta name="author" content="Ashirvaad">
-        <meta name="google-site-verification" content="Vj3KGJ1_vPzWeizRZJrUDkk2DmqQaqZNYYrDC6wWFus"/>
-        <title>
-            Ashirvaad Verma
-        </title>
-        <link rel="stylesheet" href="https://ashirvaad1.github.io/Personal/styles.css">
-        <link rel="icon" type="image/x-icon" href="https://lh3.googleusercontent.com/pw/AIL4fc8QvZnSxnDRGbVkfWABTAu-IdyY7agtDv_iSn-MTAmFMksV-sXmQH_6RCZqwF1acJ-Q2b8b62p3h-pfjrdhlEvI2tnMLYDpYpCfNE6QBbHKQttNvg=s256-p-k">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashirvaad Verma</title>
+    <script type="module" src="firebase-config.js"></script> <!-- Firebase config -->
+    <script type="module">
+        import { auth } from "./firebase-config.js";
+        import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+        // Check if user is authenticated
+        onAuthStateChanged(auth, (user) => {
+            console.log("Checking auth state on home.html");
+
+            if (!user) {
+                console.log("No user detected, redirecting to login.");
+                window.location.href = 'index.html';
+            } else {
+                console.log("User is logged in:", user);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+            }
+        });
+
+        document.getElementById('logoutButton').addEventListener('click', function () {
+            signOut(auth).then(() => {
+                console.log("User signed out, redirecting to login page.");
+                window.location.href = 'index.html';
+            }).catch((error) => {
+                console.error("Sign-out error:", error.message);
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
-  const firebaseConfig = {
-      apiKey: "AIzaSyA8aXyZQejDtv_4ErK8o435TCTWsTjebcw",
-      authDomain: "infinity-run-1.firebaseapp.com",
-      projectId: "infinity-run-1",
-      storageBucket: "infinity-run-1.appspot.com",
-      messagingSenderId: "424611937147",
-      appId: "1:424611937147:web:e49291921391b5842c1bde",
-      measurementId: "G-WZ96Y9NC7T"
-    };
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      window.location.href = 'google.com';
-    }
-  });
-  document.addEventListener('DOMContentLoaded', () => {
-    const logoutButton = document.getElementById('logoutButton');
-    if (logoutButton) {
-      logoutButton.addEventListener('click', () => {
-        signOut(auth).then(() => {
-          window.location.href = 'google.com';
-        });
-      });
-    }
-  });
-</script>
     <div id="loading">Loading...</div>
-<div id="mainContent">
-    <button id="logoutButton">Logout</button>
+    <div id="mainContent" style="display: none;">
+        <button id="logoutButton">Logout</button>
         <nav>
             <div id="a">
                 <a class="link" href="#main" title="Top">Top</a>
