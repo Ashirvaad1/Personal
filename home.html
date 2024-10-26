@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashirvaad Verma</title>
-    <script type="module" src="firebase-config.js"></script> <!-- Firebase config -->
+    <script type="module" src="firebase-config.js"></script>
     <script type="module">
         import { auth } from "./firebase-config.js";
         import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-
-        // Check if user is authenticated
         onAuthStateChanged(auth, (user) => {
             console.log("Checking auth state on home.html");
-
             if (!user) {
                 console.log("No user detected, redirecting to login.");
                 window.location.href = 'index.html';
@@ -22,7 +19,6 @@
                 document.getElementById('mainContent').style.display = 'block';
             }
         });
-
         document.getElementById('logoutButton').addEventListener('click', function () {
             signOut(auth).then(() => {
                 console.log("User signed out, redirecting to login page.");
