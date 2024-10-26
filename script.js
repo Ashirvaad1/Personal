@@ -2,7 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebas
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
+    apiKey: "
+AIzaSyA8aXyZQejDtv_4ErK8o435TCTWsTjebcw",
     authDomain: "infinity-run-1.firebaseapp.com",
     projectId: "infinity-run-1",
     storageBucket: "infinity-run-1.appspot.com",
