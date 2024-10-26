@@ -6,7 +6,7 @@ document.getElementById('loginButton').addEventListener('click', async function 
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log("Login successful:", userCredential);
-        window.location.href = 'home.html';  // Redirect to home.html
+        window.location.href = 'home.html';
     } catch (error) {
         console.error("Login error:", error.message);
         document.getElementById('errorMessage').innerText = "Login failed: " + error.message;
