@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebas
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
 const firebaseConfig = {
-    apiKey: "AIzaSyA8aXyZQejDtv_4ErK8o435TCTWsTjebcw",
+    apiKey: "YOUR_API_KEY",
     authDomain: "infinity-run-1.firebaseapp.com",
     projectId: "infinity-run-1",
     storageBucket: "infinity-run-1.appspot.com",
@@ -13,26 +13,31 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
-onAuthStateChanged(auth, (user) => {
-  const loadingElement = document.getElementById('loading');
-  const mainContent = document.getElementById('mainContent');
-  if (user) {
-    window.location.href = 'home.html';
-  } else {
-    loadingElement.style.display = 'none';
-    mainContent.style.display = 'block';
-  }
+document.getElementById('loginButton').addEventListener('click', async function () {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log("Login successful:", userCredential);
+        window.location.href = 'home.html';
+    } catch (error) {
+        console.error("Login error:", error.message);
+        document.getElementById('errorMessage').innerText = "Login failed: " + error.message;
+    }
 });
-document.getElementById('loginButton').addEventListener('click', function () {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      console.log("Login successful:", userCredential);
-      window.location.href = 'home.html';
-    })
-    .catch((error) => {
-      console.log("Login error:", error.message);
-      document.getElementById('errorMessage').innerText = error.message;
-    });
+onAuthStateChanged(auth, (user) => {
+    const loadingElement = document.getElementById('loading');
+    const mainContent = document.getElementById('mainContent');
+    try {
+        if (!user) {
+            console.log("No user is logged in, redirecting to login page.");
+            window.location.href = 'index.html';
+        } else {
+            console.log("User is logged in:", user);
+            loadingElement.style.display = 'none';
+            mainContent.style.display = 'block';
+        }
+    } catch (error) {
+        console.error("Auth state change error:", error.message);
+    }
 });
